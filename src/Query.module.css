@@ -1,0 +1,29 @@
+/* CSS Module */
+
+.pairContainer {
+  border-radius: 12pt;
+  border: 1px solid lightgray;
+  padding: 12px;
+  margin-bottom: 12px;
+  background-color: white;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+pre {
+  margin-bottom: 0 !important;
+}
+
+.responseContainer {
+  background-color: white;
+}
+
+button {
+    margin-left: 4px !important;
+}
+
+body {
+    background: #333333 !important;
+}
