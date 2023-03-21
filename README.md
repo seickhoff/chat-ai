@@ -16,6 +16,6 @@ Open up a browser and navigate to http://localhost:5173/
 
 The response from OpenAI contains markdown, so the response is rendered in a markdown container.
 
-### Example with the AI
+### Dialog with the AI
 
 ![image](https://user-images.githubusercontent.com/2509012/226728963-cf418cb9-f750-42f3-bc03-878d846db251.png)
