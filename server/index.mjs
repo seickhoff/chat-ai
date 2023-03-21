@@ -1,7 +1,7 @@
 import express from 'express'
 import bodyParser from "body-parser"
 
-import chat from "./chat.mjs" 
+import chat from "./lib/chat.mjs" 
 
 const app = express()
 app.use(bodyParser.json())
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 app.post('/', async (req, res) => {
 
     const question = req.body.q
-    const data =  await chat(question)
+    let data =  await chat(question)
     
     res
         .header("Content-Type", 'application/json')

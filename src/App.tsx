@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap"
 import { Route, Routes } from "react-router-dom"
 
-import { AppContainer } from "./AppContainer"
+import { AppContainer } from "./components/AppContainer"
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
