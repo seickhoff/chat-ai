@@ -3,7 +3,7 @@ import { Alert, Button, Form, InputGroup, Spinner } from "react-bootstrap";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-import styles from "./Query.module.css"
+import styles from "./AppContainer.module.css"
 
 const data: [] = []
 
@@ -19,27 +19,28 @@ async function doFetch(request: string) {
     return json
 }
 
-export function Query() {
+export function AppContainer() {
 
     const [list, setList] = useState<any[]>(data)
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const refContainer = useRef(null)
+    const refContainer = useRef<HTMLInputElement>(null)
 
     async function handleQuery() {
 
-        // @ts-ignore: Object is possibly 'null'.
-        const request = refContainer.current.value
+        const request = refContainer.current?.value
 
-        // needs a value to continue
+        // ignore empty requests
         if (!request) {
             return
         }
 
         setIsLoading(true)
+        
+        // call server
         const response = await doFetch(request)
+        
         setIsLoading(false)
 
-        //const key = list.length + 1;
         const record = {
             request: `${request}`,
             response: `${response}`,
@@ -47,7 +48,6 @@ export function Query() {
         }
 
         setList(prevState => {
-            console.dir([record, ...prevState])
             return [record, ...prevState];
         })
     }
@@ -72,11 +72,17 @@ export function Query() {
                         Submit
                     </Button>
                 )}
-
                 {isLoading == true && (
-                    <Spinner animation="border" role="status">
+                    <Button variant="primary" disabled>
+                        <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                        />
                         <span className="visually-hidden">Loading...</span>
-                    </Spinner>
+                    </Button>
                 )}
 
             </InputGroup>

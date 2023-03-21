@@ -24,14 +24,10 @@ async function chat(input) {
         })
 
         response = response.data.choices[0].message.content
-        console.log('RESPONSE: ' + response)
     }
     catch (err) {
         response = (`${err.name}: ${err.message}`)
-        console.log('ERROR: ' + `${response}`)
     }
-
-    response = response.replace(/\r?\n/g, "<br>");
 
     return response
 }

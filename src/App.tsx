@@ -1,7 +1,7 @@
 import { Container } from "react-bootstrap"
 import { Route, Routes } from "react-router-dom"
 
-import { Query } from "./Query"
+import { AppContainer } from "./AppContainer"
 
 import "bootstrap/dist/css/bootstrap.min.css"
 
@@ -10,7 +10,7 @@ function App() {
   return (
     <Container className="my-4">
       <Routes>
-        <Route path="/" element={<Query />} />
+        <Route path="/" element={<AppContainer />} />
       </Routes>
     </Container>
   )
