@@ -7,8 +7,8 @@ To set up the environment
 
 To run the application
 
-- npm run client
-- npm run server
+- In root, run `npm run client`
+- In server, run `node index.mjs`
 
 Open up a browser and navigate to http://localhost:5173/
 
