@@ -1,13 +1,15 @@
-# Chat AI - ChatGPT API Demo
+# Chat AI - ChatGPT OpenAI API Demo
 
 To set up the environment
 
-- In the application's base directory, run `npm install`
+- In the application base directory, run `npm install`
 - In `./server` run `npm install`
+- Create a file called `.env` in `./server` and add your API Key
+    - `OPEN_AI_API_KEY=000000000000000000000000000000000000000000000000000`
 
 To run the application
 
-- In the application's base directory, run `npm run client`
+- In the application base directory, run `npm run client`
 - In server, run `node index.mjs`
 
 Open up a browser and navigate to http://localhost:5173/
