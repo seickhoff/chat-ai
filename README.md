@@ -18,4 +18,4 @@ The response from OpenAI contains markdown, so the response is rendered in a mar
 
 ### Dialog with the AI
 
-![image](https://user-images.githubusercontent.com/2509012/226728963-cf418cb9-f750-42f3-bc03-878d846db251.png)
+![image](https://user-images.githubusercontent.com/2509012/226797350-539a611a-8467-43d0-8870-f95a90b72688.png)
