@@ -2,12 +2,12 @@
 
 To set up the environment
 
-- In root, run `npm install`
+- In the application's base directory, run `npm install`
 - In `./server` run `npm install`
 
 To run the application
 
-- In root, run `npm run client`
+- In the application's base directory, run `npm run client`
 - In server, run `node index.mjs`
 
 Open up a browser and navigate to http://localhost:5173/
