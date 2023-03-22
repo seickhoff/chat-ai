@@ -1,4 +1,4 @@
-# Chat AI - A GPT API Demo
+# Chat AI - ChatGPT API Demo
 
 To set up the environment
 
