@@ -1,10 +1,8 @@
 
 import { useRef, useState } from "react"
-import { Alert, Button, Form, InputGroup, Spinner } from "react-bootstrap"
-import ReactMarkdown from "react-markdown"
-import remarkGfm from "remark-gfm"
+import { Button, Form, InputGroup, Spinner } from "react-bootstrap"
 
-import styles from "./AppContainer.module.css"
+import { PairContainer } from "./PairContainer"
 
 // ipconfig / ifconfig
 const SERVICE_IP = '192.168.1.195'
@@ -49,7 +47,7 @@ export function AppContainer() {
         const record = {
             request: `${request}`,
             response: `${response}`,
-            key: `${list.length + 1}`
+            id: `${list.length + 1}`
         }
 
         setList(prevState => {
@@ -92,26 +90,8 @@ export function AppContainer() {
 
             </InputGroup>
 
-            {list.map((data) => (
-                <div className={`${styles.pairContainer}`}>
+            <PairContainer myData={list} />
 
-                    <Alert key={data.key} variant="success">
-                        {data.key}) {data.request}
-                    </Alert>
-
-                    <div className={`${styles.responseContainer}`}>
-
-                        <ReactMarkdown
-                            className={`border rounded p-4 table ${styles.markdownBackground}`}
-                            remarkPlugins={[remarkGfm]}
-                        >
-                            {data.response}
-                        </ReactMarkdown>
-
-                    </div>
-
-                </div>
-            ))}
         </>
     )
 }
