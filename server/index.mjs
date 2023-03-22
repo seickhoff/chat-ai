@@ -1,7 +1,8 @@
 import express from 'express'
 import bodyParser from "body-parser"
+import ip from "ip"
 
-import chat from "./lib/chat.mjs" 
+import chat from "./lib/chat.mjs"
 
 const app = express()
 app.use(bodyParser.json())
@@ -9,14 +10,15 @@ app.use(bodyParser.json())
 // Cross-Origin Resource Sharing (CORS): application-level middleware
 app.use((req, res, next) => {
 
-    const allowedOrigins = [
-        'http://127.0.0.1:5173', 
-        'http://localhost:5173'
+    const allowedClientOrigins = [
+        'http://127.0.0.1:5173',
+        'http://localhost:5173',
+        'http://192.168.1.195:5173'
     ]
 
     const origin = req.headers.origin
 
-    if (allowedOrigins.includes(origin)) {
+    if (allowedClientOrigins.includes(origin)) {
         res.setHeader('Access-Control-Allow-Origin', origin)
     }
 
@@ -31,17 +33,19 @@ app.use((req, res, next) => {
 app.post('/', async (req, res) => {
 
     const question = req.body.q
-    let data =  await chat(question)
-    
+    let data = await chat(question)
+
     res
         .header("Content-Type", 'application/json')
         .send(JSON.stringify(data, null, 4))
         .end()
 })
 
-// Start the server
-const PORT = 8090
-app.listen(PORT, () => {
-  console.log(`App listening on port ${PORT}`)
-  console.log('Press Ctrl+C to quit.')
+const PORT = 3000
+const IP = ip.address()
+
+// start the server
+app.listen(PORT, IP, () => {
+    console.log(`Server listening on port ${IP}:${PORT}`)
+    console.log('Press Ctrl+C to quit.')
 })

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "client": "vite",
+    "client": "vite --host",
     "server": "node ./server/index.mjs",
     "build": "tsc && vite build",
     "preview": "vite preview"

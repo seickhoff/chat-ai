@@ -1,14 +1,19 @@
-import { useRef, useState } from "react";
-import { Alert, Button, Form, InputGroup, Spinner } from "react-bootstrap";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+
+import { useRef, useState } from "react"
+import { Alert, Button, Form, InputGroup, Spinner } from "react-bootstrap"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
 import styles from "./AppContainer.module.css"
+
+// ipconfig / ifconfig
+const SERVICE_IP = '192.168.1.195'
+const SERVICE_PORT = 3000
 
 const data: [] = []
 
 async function doFetch(request: string) {
-    const response = await fetch('http://localhost:8090', {
+    const response = await fetch(`http://${SERVICE_IP}:${SERVICE_PORT}`, {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
