@@ -10,6 +10,7 @@ To set up the environment
 - Server: In `./server` run `npm install`
 - Server: Create a file called `.env` in `./server` and add your API Key
     - `OPENAI_API_KEY=000000000000000000000000000000000000000000000000000`
+    - See here to create an account and get your key: https://platform.openai.com/account/api-keys
 
 To run the application
 
