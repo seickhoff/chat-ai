@@ -5,7 +5,7 @@ To set up the environment
 - In the application base directory, run `npm install`
 - In `./server` run `npm install`
 - Create a file called `.env` in `./server` and add your API Key
-    - `OPEN_AI_API_KEY=000000000000000000000000000000000000000000000000000`
+    - `OPENAI_API_KEY=000000000000000000000000000000000000000000000000000`
 
 To run the application
 
