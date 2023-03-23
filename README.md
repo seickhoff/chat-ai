@@ -1,6 +1,8 @@
 # Chat AI - ChatGPT OpenAI API Demo
 
-This application has two parts:  a client and a server.  The client is the UI using React.  Enter questions and view the results.  The client is similar to a chat or Wolfram Notebook session, listing pars of questions and answers. The server receives questions from the client and calls OpenAI API then returns the results.
+This application has two parts:  a client and a server.  The client is built using React.  There, enter questions and view the results.  The client is similar to a chat session or Wolfram Notebook session, listing pairs of questions and answers. 
+
+The server receives questions from the client and calls OpenAI API then returns the results.
 
 To set up the environment
 
