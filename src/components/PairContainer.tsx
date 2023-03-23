@@ -11,7 +11,7 @@ interface Record {
     id: string;
     request: string;
     response: string;
-  }
+}
 
 type PairContainerProps = {
     myData: Record[]
