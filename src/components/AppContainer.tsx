@@ -31,6 +31,7 @@ export function AppContainer() {
     async function handleQuery() {
 
         const request = refContainer.current?.value
+        refContainer.current!.value = ""
 
         // ignore empty requests
         if (!request) {
