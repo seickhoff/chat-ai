@@ -5,7 +5,8 @@ import { Button, Form, InputGroup, Spinner } from "react-bootstrap"
 import { PairContainer } from "./PairContainer"
 
 // ipconfig / ifconfig
-const SERVICE_IP = '192.168.1.195'
+const SERVICE_IP = '192.168.1.116'
+//const SERVICE_IP = 'localhost'
 const SERVICE_PORT = 3000
 
 const data: [] = []
@@ -39,10 +40,10 @@ export function AppContainer() {
         }
 
         setIsLoading(true)
-        
+
         // call server
         const response = await doFetch(request)
-        
+
         setIsLoading(false)
 
         const record = {
@@ -56,6 +57,12 @@ export function AppContainer() {
         })
     }
 
+    const handleKeyDown = (event : any) => {
+        if (event.key === 'Enter') {
+            handleQuery()
+        }
+    }
+
     return (
         <>
 
@@ -65,6 +72,7 @@ export function AppContainer() {
                     aria-label="Enter your question"
                     aria-describedby="basic-input"
                     ref={refContainer}
+                    onKeyDown={handleKeyDown}
                 />
                 {isLoading == false && (
                     <Button

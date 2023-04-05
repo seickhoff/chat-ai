@@ -3,3 +3,13 @@
 .responseContainer {
   background-color: white;
 }
+
+pre {
+  background-color: whitesmoke;
+  padding-left: inherit;
+  padding-right: inherit;
+  margin-bottom: 12px;
+  padding-bottom: inherit;
+  padding-top: inherit;
+  border-radius: 12pt;
+}
