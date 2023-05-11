@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
-import { Button, Col, Container, Row } from "react-bootstrap"
+import { Button, Col, Container, Row, Stack } from "react-bootstrap"
 
 
 import { Question } from "./Question"
@@ -25,21 +25,24 @@ let keyCount = 0
 
 export function PairContainer({ myData }: PairContainerProps) {
 
+
+    const scalingFactor = 0.5
     const inputRef = useRef<HTMLDivElement>(null)
 
     const printDocument = () => {
 
-        const width = inputRef.current!.getBoundingClientRect().width
-        const height = inputRef.current!.getBoundingClientRect().height
-
         html2canvas(inputRef.current!).then((canvas) => {
+
+            const orientation = (canvas.height >= canvas.width) ? 'portrait' : 'landscape'
             const imgData = canvas.toDataURL("image/png");
+
             const pdf = new jsPDF({
-                orientation: "portrait",
+                orientation: orientation,
                 unit: "px",
-                format: [width, height]
+                format: [canvas.width * scalingFactor, canvas.height * scalingFactor]
             })
-            pdf.addImage(imgData, "png", 0, 0, width, height);
+
+            pdf.addImage(imgData, "png", 0, 0, canvas.width * scalingFactor, canvas.height * scalingFactor);
             pdf.save(generateDownloadFilename())
         })
     }
@@ -47,29 +50,20 @@ export function PairContainer({ myData }: PairContainerProps) {
     return (
         <>
             {myData.length > 0 &&
-                <Container>
-                    <Row className="justify-content-md-center">
-                        <Col md="auto">
-                            <Button
-                                className={`${styles.printButton}`}
-                                onClick={printDocument}
-                                variant="outline-warning"
-                            >
-                                Download conversation to PDF image
-                            </Button>
-                        </Col>
-                    </Row>
+                <Container fluid>
+                    <Stack gap={2} className="col-md-6 mx-auto">
+                        <Button
+                            className={`${styles.printButton}`}
+                            onClick={printDocument}
+                            variant="outline-warning"
+                        >
+                            Download conversation to PDF image
+                        </Button>
+                    </Stack>
+
                 </Container>
             }
 
-            <div className="mb5">
-                <Row className="justify-content-md-center">
-                    <Col>
-
-                    </Col>
-
-                </Row>
-            </div>
             <div id="divToPrint" ref={inputRef}>
                 {myData.map((data) => (
                     <div key={keyCount++} className={`${styles.pairContainer}`}>

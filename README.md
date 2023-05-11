@@ -26,3 +26,57 @@ The response from OpenAI contains markdown, so the response is rendered in a mar
 ### Dialog with the AI
 
 ![image](https://user-images.githubusercontent.com/2509012/226797350-539a611a-8467-43d0-8870-f95a90b72688.png)
+
+
+### SSL Setup
+
+Client:
+
+Install Dev Dependency:
+
+`npm install vite-plugin-mkcert -D`
+
+Update config:
+
+vite.config.ts
+```
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import mkcert from 'vite-plugin-mkcert' // add import
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  server: { https: true }, // add https: true
+  plugins: [mkcert(), react()], // add mkcert
+})
+```
+
+Server:
+
+Use OpenSSL to create certs:
+
+`openssl req -nodes -new -x509 -keyout server.key -out server.cert`
+
+- server.cert: The self-signed certificate file.
+- server.key: The private key of the certificate.
+
+Common Name (e.g. server FQDN or your name): localhost
+
+
+```
+// for SSL
+import fs from "fs"
+import https from 'https'
+....
+
+// SSL
+// const server = https.createServer({
+//     key: fs.readFileSync(`server.key`, 'utf8'),
+//     cert: fs.readFileSync(`server.cert`, 'utf8')
+// }, app)
+
+// console.log(`Server listening on https://${IP}:${PORT}`)
+// console.log('Press Ctrl+C to quit.')
+
+// await server.listen(3000);
+```

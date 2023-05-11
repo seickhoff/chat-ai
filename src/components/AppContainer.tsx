@@ -32,7 +32,6 @@ export function AppContainer() {
     async function handleQuery() {
 
         const request = refContainer.current?.value
-        refContainer.current!.value = ""
 
         // ignore empty requests
         if (!request) {
@@ -43,6 +42,8 @@ export function AppContainer() {
 
         // call server
         const response = await doFetch(request)
+
+        refContainer.current!.value = ""
 
         setIsLoading(false)
 
@@ -57,7 +58,7 @@ export function AppContainer() {
         })
     }
 
-    const handleKeyDown = (event : any) => {
+    const handleKeyDown = (event: any) => {
         if (event.key === 'Enter') {
             handleQuery()
         }
@@ -65,7 +66,6 @@ export function AppContainer() {
 
     return (
         <>
-
             <InputGroup className="mb-3">
                 <Form.Control
                     placeholder="Enter your question"
@@ -100,8 +100,6 @@ export function AppContainer() {
             </InputGroup>
 
             <PairContainer myData={list} />
-
         </>
     )
 }
-
