@@ -55,13 +55,17 @@ Server:
 
 Use OpenSSL to create certs:
 
-`openssl req -nodes -new -x509 -keyout server.key -out server.cert`
+```
+cd server
+openssl req -nodes -new -x509 -keyout server.key -out server.cert
+```
 
 - server.cert: The self-signed certificate file.
 - server.key: The private key of the certificate.
 
 Common Name (e.g. server FQDN or your name): localhost
 
+`index.mjs`
 
 ```
 // for SSL
@@ -70,13 +74,13 @@ import https from 'https'
 ....
 
 // SSL
-// const server = https.createServer({
-//     key: fs.readFileSync(`server.key`, 'utf8'),
-//     cert: fs.readFileSync(`server.cert`, 'utf8')
-// }, app)
+const server = https.createServer({
+    key: fs.readFileSync(`server.key`, 'utf8'),
+    cert: fs.readFileSync(`server.cert`, 'utf8')
+}, app)
 
-// console.log(`Server listening on https://${IP}:${PORT}`)
-// console.log('Press Ctrl+C to quit.')
+console.log(`Server listening on https://${IP}:${PORT}`)
+console.log('Press Ctrl+C to quit.')
 
-// await server.listen(3000);
+await server.listen(3000);
 ```
