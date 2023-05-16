@@ -16,6 +16,7 @@ async function chat(input) {
     try {
         response = await openAi.createChatCompletion({
             model: "gpt-3.5-turbo",
+            temperature: 0.2,
             messages: [
                 {
                     role: "user",

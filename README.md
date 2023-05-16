@@ -12,10 +12,14 @@ To set up the environment
     - `OPENAI_API_KEY=000000000000000000000000000000000000000000000000000`
     - See here to create an account and get your key: https://platform.openai.com/account/api-keys
 
-To run the application
+To run the client and server with one command: 
 
-- Client: In the application base directory, run `npm run client`
-- Server: In `./server`, run `node index.mjs`
+- `npm run app`
+
+To run the client and server seperately: 
+
+- Client: `npm run client`
+- Server: `npm run server`
 
 Open up a browser and navigate to http://localhost:5173/
 
